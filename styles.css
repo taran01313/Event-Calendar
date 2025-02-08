@@ -1,14 +1,13 @@
 /* General Styles */
-body {
-  font-family: 'Arial', sans-serif;
+html, body {
+  height: 100%;  /* Ensure the entire height of the page is used */
   margin: 0;
   padding: 0;
+  font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #6e7f99, #3a4f6e);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
 }
 
 /* Container for the calendar and event form */
@@ -20,11 +19,12 @@ body {
   text-align: center;
   width: 100%;
   max-width: 500px;
-  min-height: 500px;
+  min-height: 80vh;  /* Adjust the minimum height to 80% of the viewport height */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden; /* Ensure the content doesn't overflow */
 }
 
 /* Header */
@@ -75,6 +75,7 @@ button:hover {
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 8px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #calendar div {
@@ -140,67 +141,41 @@ button:hover {
   overflow-y: auto; /* Allow scrolling if there are too many events */
 }
 
-/* Event List Card Layout */
+/* Event List Grid Layout */
 #event-list-ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3-column grid */
-  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  height: auto; /* Let this height grow with the content */
+  overflow: visible; /* Make sure the list expands */
 }
 
 #event-list-ul li {
-  background-color: #f1f1f1;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-  position: relative;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #event-list-ul li:hover {
-  transform: translateY(-10px);
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
 }
 
-#event-list-ul li .event-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-#event-list-ul li .event-date {
-  color: #1e88e5; /* Change this to your preferred color */
-  font-size: 14px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-#event-list-ul li .event-description {
-  color: #444;
-}
-
-/* Event List - List View */
+/* Event List - List View with Scroll */
 #event-list-ul.list-view {
-  max-height: 300px;
+  max-height: 200px;
   overflow-y: auto;
   display: block;
   border: 1px solid #ccc;
 }
 
 #event-list-ul.list-view li {
-  padding: 20px;
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-#event-list-ul.list-view li:hover {
-  background-color: #e0e0e0;
+  padding: 10px;
+  background-color: #f4f4f4;
+  margin-bottom: 5px;
 }
 
 /* Modal for event details */
@@ -250,4 +225,30 @@ textarea {
 #modal-description {
   font-size: 16px;
   color: #555;
+}
+
+/* Responsive Styling for Mobile */
+@media only screen and (max-width: 600px) {
+  .calendar-container {
+    min-height: 100vh; /* Make the container take full screen height on small screens */
+    padding: 15px;
+  }
+
+  #calendar {
+    margin-bottom: 0;
+  }
+
+  #calendar div {
+    padding: 10px;
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+
+  #event-form input,
+  #event-form textarea {
+    font-size: 12px; /* Adjust input and textarea font size */
+  }
+
+  #event-list-ul {
+    grid-template-columns: 1fr; /* Stack event list items vertically on mobile */
+  }
 }
