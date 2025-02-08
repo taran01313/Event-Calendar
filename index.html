@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Calendar</title>
+  <title>Responsive Event Calendar</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+  <!-- Calendar Container -->
   <div class="calendar-container">
+    <!-- Calendar Header Section -->
     <header>
-      <button class="prev" onclick="changeMonth(-1)">&#8249;</button>
-      <h2 id="month-year"></h2>
-      <button class="next" onclick="changeMonth(1)">&#8250;</button>
+      <button id="prev-month-btn">Prev</button>
+      <div id="month-year"></div>
+      <button id="next-month-btn">Next</button>
     </header>
 
+    <!-- Calendar Days (Sun, Mon, etc.) -->
     <div id="calendar-header">
       <div>Sun</div>
       <div>Mon</div>
@@ -25,33 +27,19 @@
       <div>Sat</div>
     </div>
 
+    <!-- Calendar Dates -->
     <div id="calendar"></div>
 
+    <!-- Event Form -->
     <div id="event-form">
-      <h3>Add Event</h3>
-      <input type="text" id="event-title" placeholder="Event Title" />
+      <input type="text" id="event-title" placeholder="Event Title">
       <textarea id="event-description" placeholder="Event Description"></textarea>
-      <input type="date" id="event-date" />
-      <input type="text" id="event-day" placeholder="Day of the Week" readonly />
-      <button onclick="addEvent()">Add Event</button>
+      <button id="add-event-btn">Add Event</button>
     </div>
 
+    <!-- Event List Container -->
     <div id="event-list-container">
-      <!-- Toggle button to switch between views -->
-      <div class="view-toggle-buttons">
-        <button id="grid-view-btn" onclick="switchToGridView()">Grid View</button>
-        <button id="list-view-btn" onclick="switchToListView()">List View</button>
-      </div>
       <ul id="event-list-ul"></ul>
-    </div>
-  </div>
-
-  <!-- Modal for Event Details -->
-  <div id="event-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h3 id="modal-title"></h3>
-      <p id="modal-description"></p>
     </div>
   </div>
 
