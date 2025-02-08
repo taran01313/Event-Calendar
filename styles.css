@@ -1,13 +1,14 @@
 /* General Styles */
-html, body {
-  height: 100%;  /* Ensure the entire height of the page is used */
+body {
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #6e7f99, #3a4f6e);
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Container for the calendar and event form */
@@ -18,13 +19,13 @@ html, body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 100%;
-  max-width: 500px;
-  min-height: 80vh;  /* Adjust the minimum height to 80% of the viewport height */
+  max-width: 100%; /* Make sure it's responsive */
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden; /* Ensure the content doesn't overflow */
+  box-sizing: border-box; /* Ensure padding is inside the box */
 }
 
 /* Header */
@@ -75,7 +76,6 @@ button:hover {
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 8px;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 #calendar div {
@@ -227,28 +227,30 @@ textarea {
   color: #555;
 }
 
-/* Responsive Styling for Mobile */
-@media only screen and (max-width: 600px) {
+/* Media Queries for Responsive Design */
+
+/* For smaller screens */
+@media (max-width: 600px) {
   .calendar-container {
-    min-height: 100vh; /* Make the container take full screen height on small screens */
-    padding: 15px;
+    padding: 10px;
+    min-height: auto; /* Allow flexibility in height */
+  }
+
+  #calendar-header {
+    grid-template-columns: repeat(7, 1fr);
   }
 
   #calendar {
-    margin-bottom: 0;
-  }
-
-  #calendar div {
-    padding: 10px;
-    font-size: 14px; /* Reduce font size for smaller screens */
+    grid-template-columns: repeat(7, 1fr);
   }
 
   #event-form input,
   #event-form textarea {
-    font-size: 12px; /* Adjust input and textarea font size */
+    width: 100%;
   }
 
+  /* Event List in smaller screens */
   #event-list-ul {
-    grid-template-columns: 1fr; /* Stack event list items vertically on mobile */
+    grid-template-columns: 1fr; /* Switch to single column */
   }
 }
