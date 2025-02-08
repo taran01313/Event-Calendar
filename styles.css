@@ -1,0 +1,253 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #6e7f99, #3a4f6e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Container for the calendar and event form */
+.calendar-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Calendar Header for Days (Sun, Mon, etc.) */
+#calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 8px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-color: #ddd;
+  padding: 5px 0;
+}
+
+#calendar-header div {
+  text-align: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+/* Calendar Dates */
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 8px;
+  width: 100%;
+}
+
+#calendar div {
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+#calendar .day:hover {
+  background-color: #ffd700;
+  transform: translateY(-5px);
+}
+
+#calendar .today {
+  background-color: #ffeb3b;
+  font-weight: bold;
+}
+
+/* Event Form */
+#event-form {
+  width: 100%;
+  padding-top: 10px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#event-form input,
+#event-form textarea {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+#event-form button {
+  background-color: #2196F3;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#event-form button:hover {
+  background-color: #1976d2;
+}
+
+/* Event List Container */
+#event-list-container {
+  margin-top: 20px;
+  width: 100%;
+  flex-grow: 1; /* Allow this section to grow based on the content */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Allow scrolling if there are too many events */
+}
+
+/* Event List Card Layout */
+#event-list-ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3-column grid */
+  gap: 15px;
+}
+
+#event-list-ul li {
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+#event-list-ul li:hover {
+  transform: translateY(-10px);
+  background-color: #f0f0f0;
+}
+
+#event-list-ul li .event-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+#event-list-ul li .event-date {
+  color: #1e88e5; /* Change this to your preferred color */
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#event-list-ul li .event-description {
+  color: #444;
+}
+
+/* Event List - List View */
+#event-list-ul.list-view {
+  max-height: 300px;
+  overflow-y: auto;
+  display: block;
+  border: 1px solid #ccc;
+}
+
+#event-list-ul.list-view li {
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#event-list-ul.list-view li:hover {
+  background-color: #e0e0e0;
+}
+
+/* Modal for event details */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+}
+
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+#modal-title {
+  font-size: 24px;
+  color: #333;
+}
+
+#modal-description {
+  font-size: 16px;
+  color: #555;
+}
